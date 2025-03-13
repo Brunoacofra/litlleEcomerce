@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body{
     margin:0;
     padding: 0;
@@ -21,27 +20,3 @@ body{
     align-items: center;
     position: flex;
 }
-=======
-body{
-    margin:0;
-    padding: 0;
-}
-#container{
-    width: 212.5vh;
-    height: 100vh;
-    background: #6C7A89;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.body{
-    height: 25%;
-    width: 30%;
-    background-color: lightblue;
-    border:1px red solid;
-    justify-content: center;
-    align-items: center;
-    position: flex;
-}
->>>>>>> be628867dd9ad8e9835bf6fb65f8c03f12552ca2
