@@ -1,6 +1,12 @@
 <?php
     include_once './includes/classes/ingredientes.php';
-    include_once './includes/classes/conexao.php'
+    if(isset($_POST['enviar']))
+    {
+        $ing = new Ingrediente();
+        $ing->setIngrediente($_POST['ing']);
+        $resul = $ing->cadastrar();
+        print '<h1>'.$resul.'</h1>';
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +20,7 @@
             <div class="body">
                 <div class="form">
                     <h2>Cadastro de Ingredientes</h2>
-                    <form action="">
+                    <form method="POST">
                         <div>
                             <label>Ingrediente:</label>
                         </div>
@@ -22,7 +28,7 @@
                             <input type="text" name="ing">
                         </div>
                         <div>
-                            <button type="submit">Cadastrar</button>
+                            <button name="enviar" type="submit">Cadastrar</button>
                         </div>
                     </form>
                 </div>
