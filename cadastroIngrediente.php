@@ -5,7 +5,7 @@
         $ing = new Ingrediente();
         $ing->setIngrediente($_POST['ing']);
         $resul = $ing->cadastrar();
-        print '<h1>'.$resul.'</h1>';
+        print '<script>alert("Gravado com sucesso o item - '.$resul.'")</script>';
     }
 ?>
 <!DOCTYPE html>
