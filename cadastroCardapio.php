@@ -1,5 +1,9 @@
 <?php
     //include_once './includes/classes/lanche.php';
+    if(isset($_POST['enviar'])){
+        $qtd = count($_POST);
+        print('<script>alert("quantidade: '.$qtd.'")</script>');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,7 @@
                             <label>Nome Lanche:</label>
                         </div>
                         <div>
-                            <input type="text" name="ing">
+                            <input type="text" name="nome">
                         </div>
                         <div>
                             <label>Ingredientes:</label>

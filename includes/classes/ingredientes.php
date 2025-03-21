@@ -22,18 +22,12 @@ class ingrediente extends Database{
     }
     function buscaIngre(){
         $conexao = new Database();
-        $query = "SELECT * FROM ingrediente WHERE ing_codigo = :codigo";
+        $query = "SELECT * FROM ingrediente";
         $resul = $conexao->prepare($query);
-        $codigo = 12;
-        $resul->bindParam(':codigo',$codigo,PDO::PARAM_INT);
         $resul->execute();
-        $resultado = $resul->fetch(PDO::FETCH_ASSOC); //Pega varios resultados e devolve um array
-        if($resultado){
-            $nome = $resultado['ing_nome'];
-        }
-        //$resultado = $resul->fetchColumn();
+        $resultado = $resul->fetchAll(PDO::FETCH_ASSOC); //Pega varios resultados e devolve um array
         $conexao->closeConnection();
-        return $nome;
+        return json_encode($resultado);
     }
 }
 ?>

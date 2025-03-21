@@ -2,16 +2,19 @@ function adicionar(){
     var  a = document.getElementById("campos");
     qtd = a.getElementsByTagName("select").length;
     elemento = document.createElement("select");
-    elemento.id = "select_", qtd+1;
+    elemento.id = "select_"+(qtd+1);
+    elemento.name = "select_"+(qtd+1);
     var xrh = new XMLHttpRequest();
-    xrh.open("POST","buscaIngredientes.php",true);
+    xrh.open("POST","buscaIngredientes.php",false);
     xrh.onload  = function (){
-        resultado = this.responseText;
-        op = document.createElement("option");
-        op.innerText = resultado;
-        var pai = document.querySelectorAll("#campos select")
+        resultado = JSON.parse(this.responseText);
         a.appendChild(elemento);
-        elemento.appendChild(op);
+        for(i = 0;i <= resultado.length-1;i++){
+            op = document.createElement("option");
+            op.innerText = resultado[i]["ing_nome"];
+            elemento.appendChild(op);
+        }
+        console.log(resultado);
     }
     xrh.send();
     
