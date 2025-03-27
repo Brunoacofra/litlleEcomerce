@@ -1,8 +1,11 @@
 <?php
-    //include_once './includes/classes/lanche.php';
+    include_once './includes/classes/lanche.php';
     if(isset($_POST['enviar'])){
         $qtd = count($_POST);
         print('<script>alert("quantidade: '.$qtd.'")</script>');
+        $lanche = new Lanche();
+        $lanche->setNome($_POST['nome']);
+        print($lanche->cadastroLanche());
     }
 ?>
 <!DOCTYPE html>

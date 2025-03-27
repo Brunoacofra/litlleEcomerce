@@ -12,7 +12,7 @@ class ingrediente extends Database{
 
     function cadastrar(){
         $conexao = new Database();
-        $query = "INSERT INTO ingrediente (ing_nome) VALUES(:nome)";
+        $query = "INSERT INTO ingredientes (ing_nome) VALUES(:nome)";
         $consulta = $conexao->prepare($query);
         $consulta->bindParam(':nome',$this->ingrediente, PDO::PARAM_STR);
         $consulta->execute();
@@ -22,7 +22,7 @@ class ingrediente extends Database{
     }
     function buscaIngre(){
         $conexao = new Database();
-        $query = "SELECT * FROM ingrediente";
+        $query = "SELECT * FROM ingredientes";
         $resul = $conexao->prepare($query);
         $resul->execute();
         $resultado = $resul->fetchAll(PDO::FETCH_ASSOC); //Pega varios resultados e devolve um array
