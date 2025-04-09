@@ -1,11 +1,17 @@
 <?php
     include_once './includes/classes/lanche.php';
     if(isset($_POST['enviar'])){
-        $qtd = count($_POST);
+        $qtd = count($_POST)-2 ;
+        
         print('<script>alert("quantidade: '.$qtd.'")</script>');
         $lanche = new Lanche();
         $lanche->setNome($_POST['nome']);
-        print($lanche->cadastroLanche());
+        $ingredientes = array();
+        for($i = 1;$i<=$qtd;$i++){
+            $ingredientes[$i] = $_POST['select_'.$i];
+        }
+        var_dump($ingredientes);
+        print($lanche->cadastroLanche($ingredientes,$qtd));
     }
 ?>
 <!DOCTYPE html>

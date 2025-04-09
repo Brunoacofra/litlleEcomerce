@@ -17,7 +17,7 @@ class Lanche extends Database{
         $this->ingredientes = $a;
     }
 
-    function cadastroLanche(){
+    function cadastroLanche($ing,$qtd){
         $con = new Database();
         $query = "INSERT INTO lanches (lan_nome) VALUES(:nome)";
         $resultado = $con->prepare($query);
@@ -30,20 +30,25 @@ class Lanche extends Database{
         $resul->execute();
         $resultado = $resul->fetch(PDO::FETCH_ASSOC);
         $resul->closeCursor();
+        $ret = $this->salvaIngredientes($resultado['lan_codigo'],$ing,$qtd);
         $con->closeConnection();
-        $teste =  $this->salvaIngredientes($resultado['lan_codigo']);
-        return $teste;
+        return $ret;
     }
-    function salvaIngredientes($codigo){
+    function salvaIngredientes($lan,$codigos,$qtd){
         $con = new Database();
-        $query = "Select * FROM lanches WHERE lan_codigo = :codigo ";
-        $resul = $con->prepare($query);
-        $resul->bindParam(':codigo',$codigo,PDO::PARAM_INT);
-        $resul->execute();
-        $resultado = $resul->fetch(PDO::FETCH_ASSOC);
-        $resul->closeCursor();
+        $x = 0;
+        while ($x <=$qtd){
+            $query = "INSERT INTO lanchecompleto (lan_codigo,ing_codigo) VALUES (:codigoLache,:codigoIngrediente)";
+            $resultadoIngre = $con->prepare($query);
+            $resultadoIngre->bindParam(':codigoLache',$lan,PDO::PARAM_INT);
+            $resultadoIngre->bindParam(':codigoIngrediente',$codigos[$x],PDO::PARAM_INT);
+            $resultadoIngre->execute();
+            $resultadoIngre->closeCursor(); 
+            $x++;
+        }
         $con->closeConnection();
-        return $resultado["lan_codigo"];
+        return  "sim";
     }
+    
 }
 ?>
