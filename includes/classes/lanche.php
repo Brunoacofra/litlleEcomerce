@@ -36,8 +36,8 @@ class Lanche extends Database{
     }
     function salvaIngredientes($lan,$codigos,$qtd){
         $con = new Database();
-        $x = 0;
-        while ($x <=$qtd){
+        $x = 1;
+        while ($x <= $qtd){
             $query = "INSERT INTO lanchecompleto (lan_codigo,ing_codigo) VALUES (:codigoLache,:codigoIngrediente)";
             $resultadoIngre = $con->prepare($query);
             $resultadoIngre->bindParam(':codigoLache',$lan,PDO::PARAM_INT);
