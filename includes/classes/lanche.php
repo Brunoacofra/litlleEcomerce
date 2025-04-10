@@ -3,9 +3,16 @@ include_once './includes/classes/conexao.php';
 class Lanche extends Database{
     public $nome;
     public $ingredientes = array();
+    public $preco;
     private $con;
     public function __construct(){
         $this->con = new Database();
+    }
+    public function getPreco(){
+        return $this->preco;
+    }
+    public function setPreco($p){
+        $this->preco = $p;
     }
     public function getNome(){
         return $this->nome;
@@ -21,14 +28,16 @@ class Lanche extends Database{
     }
 
     public function cadastroLanche($ing,$qtd){
-        $query = "INSERT INTO lanches (lan_nome) VALUES(:nome)";
+        $query = "INSERT INTO lanches (lan_nome,lan_preco) VALUES(:nome,:preco)";
         $resultado = $this->con->prepare($query);
         $resultado->bindParam(":nome",$this->nome,PDO::PARAM_STR);
+        $resultado->bindParam(":preco",$this->preco,PDO::PARAM_STR);
         $resultado->execute();
         $resultado->closeCursor();
-        $query = "Select * FROM lanches WHERE lan_nome = :nome ";
+        $query = "Select * FROM lanches WHERE lan_nome = :nome AND lan_preco = :preco";
         $resul = $this->con->prepare($query);
         $resul->bindParam(':nome',$this->nome,PDO::PARAM_STR);
+        $resul->bindParam(':preco',$this->preco,PDO::PARAM_STR);
         $resul->execute();
         $resultado = $resul->fetch(PDO::FETCH_ASSOC);
         $resul->closeCursor();

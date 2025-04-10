@@ -1,11 +1,11 @@
 <?php
     include_once './includes/classes/lanche.php';
     if(isset($_POST['enviar'])){
-        $qtd = count($_POST)-2 ;
-        
-        print('<script>alert("quantidade: '.$qtd.'")</script>');
+        $qtd = count($_POST)-3 ;
+        //print('<script>alert("quantidade: '.$qtd.'")</script>');
         $lanche = new Lanche();
         $lanche->setNome($_POST['nome']);
+        $lanche->setPreco($_POST['preco']);
         $ingredientes = array();
         for($i = 1;$i<=$qtd;$i++){
             $ingredientes[$i] = $_POST['select_'.$i];
@@ -32,6 +32,12 @@
                         </div>
                         <div>
                             <input type="text" name="nome">
+                        </div>
+                        <div>
+                            <label>Preço:</label>
+                        </div>
+                        <div>
+                            <input type="Number" name="preco">
                         </div>
                         <div>
                             <label>Ingredientes:</label>
