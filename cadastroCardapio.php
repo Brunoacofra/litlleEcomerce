@@ -10,7 +10,7 @@
         for($i = 1;$i<=$qtd;$i++){
             $ingredientes[$i] = $_POST['select_'.$i];
         }
-        var_dump($ingredientes);
+        //var_dump($ingredientes);
         print($lanche->cadastroLanche($ingredientes,$qtd));
     }
 ?>
