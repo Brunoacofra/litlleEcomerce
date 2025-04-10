@@ -5,12 +5,12 @@ function adicionar(){
     elemento.id = "select_"+(qtd+1);
     elemento.name = "select_"+(qtd+1);
     let xrh = new XMLHttpRequest();
-    xrh.open("POST","buscaIngredientes.php",false);
+    xrh.open("POST","buscaIngredientes.php",async/await);
     xrh.onload  = function (){
-        resultado = JSON.parse(this.responseText);
+        let resultado = JSON.parse(this.responseText);
         a.appendChild(elemento);
         for(let i = 0;i <= resultado.length-1;i++){
-            op = document.createElement("option");
+            let op = document.createElement("option");
             op.innerText = resultado[i]["ing_nome"];
             op.value = resultado[i]["ing_codigo"];
             elemento.appendChild(op);
