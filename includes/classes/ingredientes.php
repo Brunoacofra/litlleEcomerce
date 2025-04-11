@@ -1,5 +1,5 @@
 <?php
-include_once './includes/classes/conexao.php';
+include_once __DIR__.'/conexao.php';
 class ingrediente extends Database{
     public $ingrediente;
     private $con;
@@ -29,7 +29,7 @@ class ingrediente extends Database{
         $resul->execute();
         $resultado = $resul->fetchAll(PDO::FETCH_ASSOC); //Pega varios resultados e devolve um array
         $this->con->closeConnection();
-        return json_encode($resultado);
+        return $resultado;
     }
 }
 ?>

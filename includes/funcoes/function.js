@@ -5,17 +5,18 @@ function adicionar(){
     elemento.id = "select_"+(qtd+1);
     elemento.name = "select_"+(qtd+1);
     let xrh = new XMLHttpRequest();
-    xrh.open("POST","buscaIngredientes.php",async/await);
+    xrh.open("POST","./includes/endpoints/buscaIngredientes.php",true);
     xrh.onload  = function (){
         let resultado = JSON.parse(this.responseText);
         a.appendChild(elemento);
+        console.log(resultado);
+        console.log(resultado.length);
         for(let i = 0;i <= resultado.length-1;i++){
             let op = document.createElement("option");
             op.innerText = resultado[i]["ing_nome"];
             op.value = resultado[i]["ing_codigo"];
             elemento.appendChild(op);
         }
-        console.log(resultado);
     }
     xrh.send();
     

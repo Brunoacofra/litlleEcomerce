@@ -3,13 +3,9 @@ body{
     padding: 0;
 }
 #container{
-    width: 212.5vh;
+    width: 100%;
     height: 100vh;
     background: #6C7A89;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 }
 .body{
     height: 25%;
@@ -19,4 +15,27 @@ body{
     justify-content: center;
     align-items: center;
     position: flex;
+}
+.menu{
+    background-color:brown;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+}
+.menu ul{
+    list-style: none;
+    display: flex;
+    margin:0;
+    padding:0;
+}
+.menu ul li a{
+    padding-left: 5px;
+    text-decoration: none;
+    color:white;
+}
+.menu a:hover{
+    color:#555;
 }

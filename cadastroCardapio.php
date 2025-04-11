@@ -23,6 +23,13 @@
     </head>
     <body>
         <div id="container">
+        <nav class="menu">
+            <ul>
+                <li><a href="./cadastroIngrediente.php">Ingredientes</a></li>
+                <li><a href="./cadastroCardapio.php">Lanches</a></li>
+                <li><a href="./includes/endpoints/buscaIngredientes.php">æ</a></li>
+            </ul>
+        </nav>
             <div class="body">
                 <div class="form">
                     <h2>Cadastro de Lanche</h2>
